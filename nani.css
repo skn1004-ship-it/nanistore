@@ -1,0 +1,613 @@
+/* 인디펍 https://indiepub.kr/?srsltid=AfmBOoo4lbbGEXg4BHDMEhC1bFK8vUUKnAmv8wyfa_umPM8OH6b2sowH */
+
+a {
+    text-decoration: none; /* 링크 처리된 제목과 설명의 밑줄을 지우고 글자색을 깔끔하게 통일 */
+    /* color: #333; 🎈색상 바꾸기*/
+}
+/* ===> 1) 매장안내 외 1440*54 <=== */
+header {
+    height: 54px;
+    padding-left: 125px; 
+    padding-right: 125px;                  
+    display : flex;                       /* 한 줄로 정렬 */
+    justify-content: space-between; /* 왼쪽 그룹은 왼쪽 끝, 오른쪽 그룹은 오른쪽 끝으로 */
+    border-bottom: 1px solid #171717;      /* 하단 구분선  🎈구분선 색상 변경하기  */
+    align-items: center;                  /* 상하 정중앙 정렬 */
+    background-color: #171717;
+}
+
+.header_left {  
+    font-size: 25px;  
+    color: #21f1a8;    
+}
+
+.header_right {
+    word-spacing: 10px;  
+    color: #21f1a8;
+}
+
+
+/* ===> 2) 영풍문고 검색 1440*200 <=== */
+#Main_banner {
+    /* width: 100%; */
+    padding-left: 125px; 
+    padding-right: 125px; 
+    height: 200px;                  
+    display : flex;                       /* 한 줄로 정렬 */
+    align-items: center;                  /* 상하 정중앙 정렬 */
+    justify-content: space-between;       /* 왼쪽 그룹은 왼쪽 끝, 오른쪽 그룹은 오른쪽 끝으로 */    
+    box-sizing: border-box;
+    /* margin: 0 auto;                        화면 중앙 정렬 */
+    border-bottom: 1px solid #171717;      /* 하단 구분선  🎈구분선 색상 변경하기  */
+}
+
+.Main_banner_logo {
+    width: 15%; 
+    display: flex;  
+    align-items: center;   
+}
+
+.Main_banner_logo img{
+    width: 110%;
+    max-width: 180%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.Main_banner_search {
+    width: 55%;                      /* 검색창 전체 가로 길이 고정 */
+    height: 54px;                    /* 검색창 높이 고정 */
+    display: flex;
+    align-items: center;   
+    border: 2px solid #171717;     /* 검색창 테두리 색상 */
+    border-radius: 10px;             /* 검색창 모서리 둥글게 */   
+    overflow: hidden;  
+    /* padding: 0 15px;                 양 끝에만 최소한의 여백 부여 */
+    /* box-sizing: border-box;          패딩이 크기에 영향을 주지 않도록 설정 */
+}
+
+.search_input{
+    width: 90%;
+    border: none;                           /* 안쪽 네모난테두리 제거*/    
+    outline: none;                          /* 클릭 시 파란 테두리 제거 */
+    padding: 2%;                             /* 인풋 자체 여백을 없애서 테두리 끝까지 밀착 */ 
+    flex-grow: 1;                           /* 남은 공간을 입력창이 꽉 채움 */
+    /* height: 100%;                           검색차 세로 높이를 100% 꽉 채움     */
+    font-size: 1rem;
+    /* letter-spacing: -0.04em;                글자 간격 설정(한국어 검색어 가독성을 위해 자간을 좁힘 */
+    background-color: transparent;          /* 배경 투명하게 */
+}
+
+.search_btn{
+    width: 50px;
+    border: none;
+    background: transparent;   /* 배경 제거 */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.search_btn img {
+    width : 35%;
+    height: 35%;
+    object-fit: contain;
+}
+
+
+.Main_banner_book {
+    width: 22%;
+    display: flex;
+    align-items: center;                  /* 세로 가운데 정렬 */
+    /* position: relative;                   내부 요소(제목, 작가) 들의 좌표 배치를 위한 기준점 지정 */
+    text-decoration: none;    
+}
+
+/* 책 이미지를 감싸는 바깥 네모 박스 */
+.Main_banner_book_img {
+    width: 100px;                          /* 감싸는 부모 박스 가로 고정 */
+    flex-shrink: 0;                       /* 화면이 줄어들어도 책 이미지가 찌그러지지 않도록 고정 */
+    /* overflow: hidden;                     넘치는 자식 이미지 잘라내기 */
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.15); /* 부드러운 책 그림자 효과 */ 
+}
+
+.Main_banner_book_img img {
+    width: 100%;
+    display: block;
+    /* height: auto; */
+}
+
+/* 책 정보 텍스트 영역 (제목+저자) */
+.Main_banner_info {
+    margin-left: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    height: 150px;
+}
+
+.Main_banner_book_title h3{
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: #171717;
+    font-weight: 500;
+}
+
+.Main_banner_book_author1 p{
+    font-size: 14px;
+    line-height:1.6;
+    margin: 0;
+    color: #171717;
+}
+
+.Main_banner_arrows{
+    /* position:absolute; */
+    /* right:0; */
+    /* bottom:0; */
+    display:flex;
+    gap:8px;
+    margin-top: auto;    
+}
+.Main_banner_arrows button {
+    background: none; /* 회색 배경 제거 */
+    border: none; /* 기본 테두리 제거 */
+    padding: 0; /* 내부 여백 제거 */
+    outline: none; /* 클릭시 나오는 아웃라인 제거 */
+    
+    /* 화살표 배치를 위한 정렬 설정 */}
+
+ /* 좌우 화살표 크기 줄이기 */
+ .Main_banner_arrows button img {
+    width: 15px;           /* 화살표 가로 크기 (원하는 크기로 조절 가능) */
+    height: auto;          /* 비율에 맞춰 세로 크기 자동 조절 */
+    object-fit: contain;
+}
+
+.main_banner_prev_btn,
+.main_banner_next_btn{
+    width: 30px;
+    height: 30px;
+    aspect-ratio:50%;
+    /* border:1px solid #ddd; */
+    /* background:#fff; */
+    cursor:pointer;
+    font-size: 18px;
+    /* background-color: #21f1a8; */
+    /* color: #171717 ; */
+    font-weight: bold;
+    display: flex;
+    border: none;
+    justify-content: center;            /* 가로 가운데 */
+    align-items: center;                /* 세로 가운데 */
+}
+
+/* 메인 배너 아래에 뿌려질 검색 결과 도서 바둑판(Grid) 스타일  */
+.book-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 화면 크기에 맞게 자동으로 바둑판 정렬 */
+    gap: 30px; /* 카드와 카드 사이 간격 */
+    max-width: 1200px;
+    margin: 40px auto; /* 중앙 정렬 및 위아래 여백 */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.book-card {
+    border: 1px solid #eee; 
+    padding: 20px; 
+    border-radius: 8px;
+    text-align: center; 
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    
+    transition: transform 0.2s, box-shadow 0.2s; 
+    
+    /* 상세페이지 링크 이동을 위해 필수로 들어가야 하는 마우스/클릭 설정 */
+    cursor: pointer;          /* 마우스 올리면 손가락 모양 표시 */
+    text-decoration: none;    /* 기본 파란색 밑줄 원천 차단 */
+    display: block;           /* 카드 전체 영역 클릭 가능하도록 지정 */
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* 마우스 올리면 살짝 뜨는 효과 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.book-thumbnail {
+    max-width: 120px;
+    height: 174px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+}
+
+.book-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px 0 5px;
+    color: #171717;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 제목 너무 길면 ... 처리 */
+}
+
+.book-authors {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-price {
+    font-size: 15px;
+    color: #e65100; /* 가격 강조 색상 */
+    font-weight: bold;
+}
+
+
+
+/* ===> 3) 베스트 셀러 섹션 1440*423 <=== */
+/* 1. 전체 섹션 및 기본 레이아웃 스타일링 */
+#BestSheller_section {                     
+    position: relative;
+    width: 1440px;                 /* 1440px 규격 고정 */
+    height: 423px;
+    margin: 0 auto;                /* 화면 정중앙에 배치 */
+    padding: 0 125px; 
+    box-sizing: border-box;                
+    display: flex;                         
+    align-items: center;           /* 내부 자식 요소들 세로 정중앙 */
+    justify-content: center;       /* 콘텐츠 영역을 수평 정중앙으로 밀어넣기 */
+    overflow: hidden;
+    border-bottom: 1px solid #171717;     
+    
+    border-left: none !important;         
+    border-right: none !important;        
+}
+/* 슬라이더 컨테이너 (정중앙 배치의 핵심) */
+.BestSheller_slider_container {
+    width: 950px !important;       /* 양쪽 화살표 안쪽의 콘텐츠가 모일 가로폭 강제 고정 */
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 링크 영역 (텍스트 좌측, 이미지 우측 균형 정렬) */
+.BestSheller_section_show {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between; /* 950px 폭 안에서 글씨와 이미지를 양극단으로 배치 */
+    align-items: center;
+    text-decoration: none;
+    color: #171717;
+    padding-top:0 ;
+}
+
+/* 2. 왼쪽 글씨 순차 애니메이션 (animation-delay) */
+.BestSheller_text_box {
+    width: 550px;                  /* 텍스트 박스 고유 영역 확보 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    height: 100%;              /* ★ 추가 */
+    transform: translateY(-15px); /* ★ 추가 */
+}
+
+/* 서브 타이틀 ("나는 내가 아닌 나") - [1등 등장] */
+.BestSheller_sub_title {
+    font-size: 12px;
+    color: #171717;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUpStack 0.8s forwards; 
+}
+
+/* 메인 타이틀 전체 wrap */
+.BestSheller_main_title {
+    margin: 0 0 35px 0;
+}
+
+/* 메인 타이틀 줄바꿈 <span> */
+.BestSheller_main_title span {
+    display: block;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -0.5px;
+    opacity: 0;
+}
+
+/* 메인 타이틀 첫 번째 줄 ("60여 년 전 어느 청년이 남긴") -[2등 등장] */
+.BestSheller_main_title span:nth-child(1) {
+    animation: fadeInUpStack 0.8s forwards 0.6s; 
+}
+
+/* 메인 타이틀 두 번째 줄 ("삶과 존재에 대한 치열한 기록.") - [3등 등장] */
+.BestSheller_main_title span:nth-child(2) {
+    animation: fadeInUpStack 0.8s forwards 1.2s; 
+}
+
+/* 더보기 버튼 ("more >") - [4등 최종 등장] */
+.BestSheller_more_btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: #171717;
+    color: #21f1a8;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeInUpStack 0.6s forwards 2.0s; 
+}
+
+/* 3. 오른쪽 이미지 스타일링 - [글씨 뜰 때 같이 안착] */
+/* 3. 오른쪽 이미지 스타일링 (사이즈 업!) */
+.BestSheller_img {
+    width: 320px;                  /* 이미지 박스 고유 너비 확보 */
+    opacity: 0;  
+    animation: fadeInRight 0.8s forwards 0.3s; 
+    border: none transparent !important;
+    box-shadow: none !important;          
+    display: flex;
+    justify-content: flex-end;     /* 이미지를 우측 끝으로 밀착 */
+    align-items: center;
+}
+
+.BestSheller_img img {
+    height: 340px !important;      /* 왜소했던 책 크기를 340px로 시원하게 확대 */
+    width: auto !important;        /* 비율 깨짐 방지 */
+    display: block;
+    border: none !important;              
+}
+
+/* 4.좌우 버튼 및 하단 페이지 번호 */
+.BestSheller_left_btn, 
+.BestSheller_right_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;   
+    cursor: pointer;        
+    z-index: 10;
+    padding: 0;
+    outline: none;            
+    border: none !important;  
+}
+
+.BestSheller_left_btn { left: 40px; }
+.BestSheller_right_btn { right: 40px; }
+
+/* 희미한 검정(회색) 기본 화살표 가상 요소 가리기 */
+/* span 태그나 가상 요소(::after, ::before)로 들어간 검정 화살표를 안 보이게 처리합니다. */
+.BestSheller_slider_left,
+.BestSheller_slider_right,
+.BestSheller_left_btn::after,
+.BestSheller_left_btn::before,
+.BestSheller_right_btn::after,
+.BestSheller_right_btn::before {
+    display: none !important;    /* 혹시 모를 잔여 화살표 요소 완전히 숨김 */
+}
+
+/*민트색 화살표 이미지 크기 조절 */
+.BestSheller_left_btn img,
+.BestSheller_right_btn img {
+    width: 40px;            
+    height: auto;
+    display: block;
+}
+
+/* 하단 페이지 표시 (4 / 4) */
+.BestSheller_page {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #171717;
+    padding: 5px 14px;
+    border-radius: 15px;
+    font-size: 13px;
+    color: #21f1a8;
+    font-weight: 500;
+    z-index: 10;
+}
+
+/* 5.슬라이더 컨테이너 및 내부 모든 자식 요소의 테두리 강제 제거(가이드선 예방 밀어 붙이기) */
+#BestSheller_section,
+#BestSheller_section *,
+.BestSheller_slider_container,
+.BestSheller_slider_container *,
+.BestSheller_section_show,
+.BestSheller_section_show * {
+    border-left: none !important;
+    border-right: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 6. 애니메이션 키프레임 정의 (단일화) */
+@keyframes fadeInUpStack {
+    0% {
+        opacity: 0;
+        transform: translateY(15px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+/* ===> 4) 신간도서 외 1440*210 <=== */
+#Book_index { 
+    height: 210px;
+    padding-left: 125px; 
+    padding-right: 125px;                   
+    display : flex;                       /* 한 줄로 정렬 */
+    justify-content: space-between; /* 왼쪽 그룹은 왼쪽 끝, 오른쪽 그룹은 오른쪽 끝으로 */
+    border-bottom: 1px solid #171717;      /* 하단 구분선  🎈구분선 색상 변경하기  */
+    align-items: center;   
+}
+
+.Book_index_cover {
+    border: 2px solid #000;
+}
+
+.Book_index_name {
+    border: 2px solid #000;
+}
+
+
+/* ===> 4) 신간도서 외 1440*210 <=== */
+/* 전체 컨테이너 설정 */
+#Book_index {
+    display: flex;
+    justify-content: space-between; /* 5개 요소를 좌우 균등하게 분배 */
+    align-items: center;           /* 세로 가운데 정렬 */
+    width: 1400px;
+    height: 210px;
+    margin: 0 auto;                
+    box-sizing: border-box;
+    background-color: #ffffff;     
+    padding: 0 20px;               
+}
+
+/* 개별 섹션 링크 (a 태그) */
+.Book_index_section {
+    display: flex;
+    flex-direction: column;        /* 이미지와 텍스트를 세로로 배치 */
+    align-items: center;           
+    justify-content: center;       
+    text-decoration: none;         /* 링크 밑줄 제거 */
+    color: #171717;                
+    width: 220px;                  
+    height: 100%;
+    transition: transform 0.2s ease, color 0.2s ease; 
+    
+    /* 1. 링크 클릭 시 발생하는 테두리 선(outline) 제거 */
+    outline: none;
+    border: none;
+}
+
+/* 마우스 오버(Hover) 효과 */
+.Book_index_section:hover {
+    transform: translateY(-5px);   
+    color: #007bff;                
+}
+
+/* 이미지 스타일 */
+.Book_index_cover {
+    width: 100px;                  
+    height: 100px;                 
+    object-fit: contain;           
+    margin-bottom: 12px;           
+    
+    /* 2. 이미지 자체에 들어간 테두리 선 제거 */
+    border: none;
+    outline: none;
+}
+
+/* 텍스트 스타일 */
+.Book_index_name {
+    margin: 0;                     
+    font-size: 16px;               
+    font-weight: 600;              
+    line-height: 1.4;
+    text-align: center;            
+    
+    /* 3. 텍스트 요소 테두리 선(혹은 border) 확실히 제거 */
+    border: none;
+    outline: none;
+}
+
+
+/* ===> 5) 오늘의 책 1440*530 <===  */
+#Today_book{
+    border-bottom: 1px solid #171717;
+}
+.Today_book_title {
+    margin: 0 !important;               /* 제목 마진 제거 */
+    font-size: 30px;
+    line-height: 60px;                  /* 헤더 높이와 글자 높이 일치 */
+}
+
+.Today_book_header {
+    display: flex !important;           /* 강제 적용 */
+    justify-content: space-between;     /* 제목은 왼쪽, 화살표는 오른쪽 끝 */
+    align-items: center !important;     /* 수직 중앙 정렬 핵심 */
+    width: 100%;
+    height: 60px;                       /* 높이 강제 고정 */
+    margin: 0 0 20px 0 !important;      /* 제목/화살표 기본 마진 제거 */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-btn img {
+    width: 25px;                        /* 사이즈 살짝 키움 */
+    height: 25px;
+    object-fit: contain;
+}
+
+.Today_book_nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px;                          /* 버튼 사이 간격 */
+    height: 100%;                       /* 헤더 높이 꽉 채움 */
+}
+
+.Today_book_list {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.Today_book_section {
+    /* 🛠️ 수정: 부모 컨테이너(Today_book_list)에 맞춰 유연한 너비 */
+    flex: 1; 
+    max-width: 250px;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    color: #171717;
+    /* ✅ 추가: 이미지와 제목을 아래로 정렬하기 위한 구조 */
+    display: flex;
+    flex-direction: column;
+}
+
+.Today_book_cover {
+    /* 🛠️ 수정: 공간에 꽉 차게 이미지 확장 */
+    width: 100%;
+    height: 300px;
+    object-fit: contain; 
+    margin-bottom: 15px;
+}
+
+.Today_book_name {
+    /* ✅ 추가: 제목이 사진 바로 아래에 위치하도록 강제 */
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+
+/* border: 2px solid #000;          라인 잡기 */
+
+/* 인디펍 https://indiepub.kr/?srsltid=AfmBOoo4lbbGEXg4BHDMEhC1bFK8vUUKnAmv8wyfa_umPM8OH6b2sowH */

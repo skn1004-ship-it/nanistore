@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>검색 결과 - Nani Bookstore</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; background-color: #f9f9f9; }
+        h2 { border-bottom: 2px solid #171717; padding-bottom: 15px; color: #171717; margin-bottom: 20px; }
+        
+        .book-list-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .book-card {
+            border: 1px solid #eee; padding: 20px; border-radius: 8px;
+            text-align: center; background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .book-card:hover { transform: translateY(-5px); }
+        .book-thumbnail { max-width: 120px; height: 174px; object-fit: cover; margin-bottom: 15px; box-shadow: 1px 1px 4px rgba(0,0,0,0.15); }
+        .book-title { font-weight: bold; font-size: 15px; margin: 10px 0 5px; color: #171717; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .book-authors { font-size: 13px; color: #666; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .book-price { font-size: 15px; color: #e65100; font-weight: bold; }
+        .no-result { font-size: 16px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <h2>도서 검색 결과</h2>
+    <div id="searchResultList" class="book-list-container">
+        <p>검색 결과를 불러오는 중입니다...</p>
+    </div>
+
+    <script>
+        // 🟢 아까 메인 화면에서 "검색이 정말 잘 되던" 진짜 카카오 REST API 키를 넣어주세요.
+        const API_KEY = "700ebf4ec991a549ab74fa9d95364239"; 
+
+        // 1. 주소창 뒷부분(?keyword=검색어)에서 값을 온전히 꺼냅니다.
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('keyword');
+
+        if (query) {
+            document.title = `'${query}' 검색 결과 - Nani Bookstore`;
+            document.querySelector('h2').innerText = `'${query}'에 대한 검색 결과`;
+            
+            // 2. 카카오 API 호출 함수 실행
+            fetchBooks(query);
+        } else {
+            document.getElementById('searchResultList').innerHTML = "<p class='no-result'>검색어가 전달되지 않았습니다.</p>";
+        }
+
+        // 🟢 아까 메인 창에서 성공했던 바로 그 오리지널 API 셋팅입니다.
+        function fetchBooks(searchQuery) {
+            fetch(`https://dapi.kakao.com/v3/search/book?query=${encodeURIComponent(searchQuery)}&size=12`, {
+                headers: {
+                    Authorization: `KakaoAK ${API_KEY}`
+                }
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("네트워크 응답 오류");
+                return res.json();
+            })
+            .then(data => {
+                const container = document.getElementById('searchResultList');
+                container.innerHTML = ""; // 로딩 메세지 초기화
+
+                if (!data.documents || data.documents.length === 0) {
+                    container.innerHTML = `<p class="no-result">검색 결과가 없습니다...</p>`;
+                    return;
+                }
+
+                data.documents.forEach(book => {
+                    // 1. div 대신 전체를 감싸는 a 태그(링크)로 카드를 생성합니다.
+                    const card = document.createElement("a");
+                    card.className = "book-card";
+
+                    // 2. 카카오에서 제공하는 책 상세 URL을 타겟으로 지정하고, 새 창(_blank)으로 열리게 세팅합니다.
+                    card.href = book.url; 
+                    card.target = "_blank";
+                    card.style.textDecoration = "none"; // 밑줄 제거
+                    card.style.display = "block";       // 영역 클릭 활성화
+                    
+                    const thumbnail = book.thumbnail ? book.thumbnail : "https://via.placeholder.com/120x174?text=No+Image";
+                    const price = book.price ? `${book.price.toLocaleString()}원` : "가격 정보 없음";
+                    const authors = book.authors.length > 0 ? book.authors.join(", ") : "저자 미상";
+
+                    card.innerHTML = `
+                        <img class="book-thumbnail" src="${thumbnail}" alt="${book.title}">
+                        <div class="book-title" title="${book.title}">${book.title}</div>
+                        <div class="book-authors">${authors}</div>
+                        <div class="book-price">${price}</div>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(err => {
+                console.error("API 로딩 에러:", err);
+                document.getElementById('searchResultList').innerHTML = "<p class='no-result'>데이터를 불러오는 중 오류가 발생했습니다.<br>Main_search.html 파일 내부의 API_KEY를 다시 확인해주세요.</p>";
+            });
+        }
+    </script>
+</body>
+</html>
